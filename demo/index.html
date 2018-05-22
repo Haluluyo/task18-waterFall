@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="description" content="瀑布流-demo"/>
+  <title>瀑布流-demo</title>
+</head>
+<body>
+  <div class="wrap">
+  <div class="item h1">1</div>
+	<div class="item h3">2</div>
+	<div class="item h2">3</div>
+	<div class="item h1">4</div>
+	<div class="item h3">5</div>
+	<div class="item h2">6</div>
+	<div class="item h3">7</div>
+	<div class="item h1">8</div>
+	<div class="item h3">9</div>
+	<div class="item h2">10</div>
+	<div class="item h1">11</div>
+	<div class="item h1">12</div>
+	<div class="item h1">13</div>
+	<div class="item h2">14</div>
+	<div class="item h3">15</div>
+  <div class="item h1">16</div>
+	<div class="item h2">17</div>
+	<div class="item h1">18</div>
+	<div class="item h1">19</div>
+	<div class="item h2">20</div>
+	<div class="item h3">21</div>
+  <div class="item h3">22</div>
+  <div class="item h2">23</div>
+  <div class="item h3">24</div>
+  <div class="item h1">25</div>
+  </div>
+  <script>
+    waterFall();
+    $(window).resize(function(){
+      waterFall();
+    });
+
+    function waterFall(){
+      var ctWidth=$('.wrap').width()
+      var divWidth=$('.item').width()
+      var colCount=parseInt(ctWidth/divWidth);
+      var itemArr=[];
+      for(var i=0;i<colCount;i++){
+        itemArr[i]=0;
+      }
+      $('.item').each(function(){
+        //var minValue = Math.min.apply(null,itemArr);
+        //var minIndex = itemArr.indexOf(minValue);
+        var idx=0;
+        var minColHeight=itemArr[0];
+        for(var i=0;i<itemArr.length;i++){
+          if(itemArr[i]<minColHeight){
+            idx=i;
+            minColHeight=itemArr[i]
+          }
+        }
+        $(this).css({
+          top: itemArr[idx],
+          left: $(this).outerWidth(true)*idx
+        })
+        itemArr[idx]+=$(this).outerHeight(true)
+      })
+    }
+  </script>
+</body>
+</html>
