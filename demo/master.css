@@ -1,0 +1,21 @@
+.wrap{
+  position: relative;
+}
+.item{
+  position: absolute;
+  width: 200px;
+  margin: 10px 10px 0 0;
+  transition: all .8s;
+}
+.h1{
+  height: 180px;
+  background: #ff44bb;
+}
+.h2{
+  height: 80px;
+  background: #f4b300;
+}
+.h3{
+  height: 320px;
+  background: #006ac1;
+}
